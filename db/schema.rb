@@ -86,28 +86,22 @@ ActiveRecord::Schema.define(version: 2018_09_02_221043) do
   create_table "streams", force: :cascade do |t|
     t.string "title"
     t.string "description"
-    t.bigint "users_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["users_id"], name: "index_streams_on_users_id"
+    t.index ["user_id"], name: "index_streams_on_user_id"
   end
 
   create_table "tags", force: :cascade do |t|
-    t.string "description"
-    t.bigint "users_id"
-    t.bigint "image_id"
-    t.bigint "stream_id"
+    t.string "description", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["image_id"], name: "index_tags_on_image_id"
-    t.index ["stream_id"], name: "index_tags_on_stream_id"
-    t.index ["users_id"], name: "index_tags_on_users_id"
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "username"
+    t.string "username", null: false
     t.string "avatar_uuid"
-    t.string "email"
+    t.string "email", null: false
     t.string "name"
     t.string "bio"
     t.string "url"
